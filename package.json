@@ -1,0 +1,17 @@
+{
+  "name": "MithrilJS",
+  "version": "0.0.0",
+  "devDependencies": {
+    "gulp": "^3.8.0",
+    "gulp-autoprefixer" : "*",
+    "gulp-minify-css" : "*",
+    "gulp-jshint" : "*",
+    "gulp-uglify" : "*",
+    "gulp-imagemin" : "*",
+    "gulp-rename" : "*",
+    "gulp-concat" : "*",
+    "gulp-notify" : "*",
+    "gulp-livereload" : "*",
+    "del" : "*"
+  }
+}
