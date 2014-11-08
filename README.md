@@ -100,6 +100,9 @@ app.component('MyComponent', containerElement, {
 This'll automatically attach this component to the container and instantiate it. You can also get an existing component instance (and use it in possibly a different container):
 
 ```javascript
+var instance = app.component('MyComponent');
+
+// This'll set it to this element
 app.component('MyComponent', containerElement);
 ```
 

@@ -7,7 +7,6 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
-    livereload = require('gulp-livereload'),
     del = require('del');
 
 var paths = {
@@ -57,7 +56,7 @@ gulp.task('images', function () {
 
 // Clean up
 gulp.task('clean', function (callback) {
-    del([paths.production.css, paths.production.scripts, paths.production.img], callback);
+    del([paths.production.css + '/style.min.css', paths.production.scripts, paths.production.img], callback);
 });
 
 // Default task
@@ -70,8 +69,4 @@ gulp.task('watch', function() {
   gulp.watch(paths.development.css, ['styles']);
   gulp.watch(paths.development.scripts, ['scripts']);
   gulp.watch(paths.development.img, ['images']);
-
-  livereload.listen();
-
-  gulp.watch([paths.production.css + '/**', paths.production.scripts + '/**', paths.production.img + '/**']).on('change', livereload.changed);
 });

@@ -32,9 +32,13 @@
   app.components = {};
 
   app.component = function (name, container, instance) {
-    if (instance) app.components[name] = instance;
+    if (!container, !instance)
+      return app.components[name];
 
-    if (app.components[name])
+    if (instance)
+      app.components[name] = instance;
+
+    if (app.components[name] && container)
       m.module((container == app.container ? document.body : container), app.components[name]);
   };
 
