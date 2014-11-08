@@ -81,6 +81,28 @@ And to get the instance of the model:
 var instance = app.model('MyAwesomeModel');
 ```
 
+###### Declaring components:
+
+Components are app-wide reusable modules that can be attached to any container. They're stored in the `_dev/components` folder.
+Here's how to declare a component, remember that the controller and view function properties are mandatory according to MithrilJS conventions:
+
+```javascript
+app.component('MyComponent', containerElement, {
+  controller : function () {
+    // First Gotham, then the World
+  },
+  view : function (controller) {
+    // Allow me to break the ice
+  }
+});
+```
+
+This'll automatically attach this component to the container and instantiate it. You can also get an existing component instance (and use it in possibly a different container):
+
+```javascript
+app.component('MyComponent', containerElement);
+```
+
 ##### Conclusion:
 
 I hope this boilerplate is useful to anybody in the vast space that is the Internet. Be sure to write me back with ideas on how I can improve this further, I'll be glad to read them.

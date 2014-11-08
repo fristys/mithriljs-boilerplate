@@ -28,6 +28,16 @@
       app.models[name] = instance;
   };
 
+  // Component storage
+  app.components = {};
+
+  app.component = function (name, container, instance) {
+    if (instance) app.components[name] = instance;
+
+    if (app.components[name])
+      m.module((container == app.container ? document.body : container), app.components[name]);
+  };
+
   // Globalizing the ordeal
   window.app = app;
 

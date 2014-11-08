@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 
 var paths = {
     development : {
-        scripts : ['_dev/app/app.js', '_dev/app/models/*.js', '_dev/app/modules/**/**Module.js',
+        scripts : ['_dev/app/app.js', '_dev/app/models/*.js', '_dev/app/components/*.js', '_dev/app/modules/**/**Module.js',
                     '_dev/app/modules/**/**Model.js','_dev/app/modules/**/**Controller.js',
                     '_dev/app/modules/**/**View.js', '_dev/app/app.routes.js'],
         css : '_dev/css/style.css',
