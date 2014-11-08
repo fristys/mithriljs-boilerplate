@@ -16,9 +16,10 @@ I've recently discovered this framework, and I love the basic concepts it brings
 ##### File structure conventions:
 
 The development files are located in the `_dev` folder, each module is stored in its own folder, located inside the `_dev/modules` folder.
-If you want consistent Gulp outputs, make sure to follow the following file structure inside each module's folder:
+If you want consistent Gulp outputs (and you do), make sure to follow the following file structure inside each module's folder:
 
-* `ModuleName.js` _(you instantiate the module here)_
+* `ModuleNameModule.js` _(you instantiate the module here, also notice the xxModule.js, Module is an important keyword)_
+* `ModuleNameModel.js`
 * `ModuleNameController.js`
 * `ModuleNameView.js`
 
@@ -64,7 +65,21 @@ app.module('ModuleName').view = function (controller) {
 };
 ```
 
-Rembember that you must call the `app.module('ModuleName')` properties exactly like this, as this is a Mithril convention and it won't work otherwise.
+###### Declaring models:
+
+Declaring models is really easy. Models can be both stored in the `_dev/models` folder or your `_dev/modules/ModuleName/` folder _(just remember to have a xxModel.js format when storing them inside the module's folder)_. To create a model simply write
+
+```javascript
+app.model('MyAwesomeModel', {
+  this.name = 'Awesome';
+});
+```
+
+And to get the instance of the model:
+
+```javascript
+var instance = app.model('MyAwesomeModel');
+```
 
 ##### Conclusion:
 
