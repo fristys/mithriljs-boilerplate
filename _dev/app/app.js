@@ -23,7 +23,7 @@
 
   app.model = function (name, instance) {
     if (!instance)
-      return (app.models[name] ? app.models[name] : undefined);
+      return app.models[name];
     else
       app.models[name] = instance;
   };
