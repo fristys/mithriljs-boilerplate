@@ -32,7 +32,7 @@
   app.components = {};
 
   app.component = function (name, container, instance) {
-    if (!container, !instance)
+    if (!container || !instance)
       return app.components[name];
 
     if (instance)
