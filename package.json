@@ -11,6 +11,7 @@
     "gulp-rename" : "*",
     "gulp-concat" : "*",
     "gulp-notify" : "*",
+    "gulp-chmod" : "*",
     "gulp-livereload" : "*",
     "del" : "*"
   }

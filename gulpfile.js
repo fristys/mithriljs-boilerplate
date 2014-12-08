@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
+    chmod = require('gulp-chmod'),
     notify = require('gulp-notify'),
     del = require('del');
 
@@ -30,6 +31,7 @@ gulp.task('styles', function () {
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
+    .pipe(chmod(755))
     .pipe(gulp.dest(paths.production.css))
     .pipe(notify({ message: 'Styles task complete' }));
 });
@@ -42,6 +44,7 @@ gulp.task('scripts', function() {
     .pipe(concat('application.js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
+    .pipe(chmod(755))
     .pipe(gulp.dest(paths.production.scripts))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
@@ -50,6 +53,7 @@ gulp.task('scripts', function() {
 gulp.task('images', function () {
   return gulp.src(paths.development.img)
     .pipe(imagemin({ optimizationLevel : 3, progressive : true, interlaced : true }))
+    .pipe(chmod(755))
     .pipe(gulp.dest(paths.production.img))
     .pipe(notify({ message: 'Images task complete' }));
 });
