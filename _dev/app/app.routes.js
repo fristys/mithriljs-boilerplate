@@ -1,3 +1,5 @@
+/*jshint loopfunc: true */
+
 /*
   Application route handler
 */
