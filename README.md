@@ -7,7 +7,7 @@ I've recently discovered this framework, and I love the basic concepts it brings
 Useful links:
 - [MithrilJS Home page](http://lhorie.github.io/mithril/)
 - [MithrilJS Docs](http://lhorie.github.io/mithril/mithril.html)
-- [MithrilJS @ Github]()
+- [MithrilJS @ Github](https://github.com/lhorie/mithril.js)
 - [Yeoman generator @ NPM](https://www.npmjs.com/package/generator-mithrilbp)
 - [Yeoman generator @ GitHub](https://github.com/fristys/generator-mithrilbp)
 
