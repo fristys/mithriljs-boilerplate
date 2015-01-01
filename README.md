@@ -4,14 +4,54 @@ My personal [MithrilJS](http://lhorie.github.io/mithril/) application boilerplat
 
 I've recently discovered this framework, and I love the basic concepts it brings to the table. I've made a small Boilerplate you can use in your projects, it uses a set of simple conventions and GulpJS to compile and minify everything.
 
-##### Installation:
+Useful links:
+[MithrilJS Home page](http://lhorie.github.io/mithril/)
+[MithrilJS Docs](http://lhorie.github.io/mithril/mithril.html)
+[MithrilJS @ Github]()
+[Yeoman generator @ NPM](https://www.npmjs.com/package/generator-mithrilbp)
+[Yeoman generator @ GitHub](https://github.com/fristys/generator-mithrilbp)
+
+##### Installation via Yeoman:
+
+1. Make sure you have NodeJS installed
+2. Install Yeoman and the MithrilJS Boilerplate generator for it by writing the following command in your NodeJS console:
+
+```bash
+npm install -g yo generator-mithrilbp
+```
+
+3. Navigate to the folder you want to start your MithrilJS boilerplate powered project in and type in the following command:
+
+```bash
+yo mithrilbp
+```
+
+4. Follow the command prompts and you should get an application generated for you
+5. To start the development process of the application type in the following command (whilst being in the root directory of the application):
+
+```bash
+gulp
+```
+
+6. Navigate to http://localhost:1337/ to view your newly-created application
+
+##### Manual Installation:
 
 1. Make sure you have NodeJS installed
 2. Clone or download this repository where you want to start your project
-3. Run `npm install` in the root directory where you've done step 2
-4. Run `gulp`
-5. ???
-6. Profit
+3. Run the following command in your NodeJS console, whilst being in the root directory where you've done step 2:
+
+```bash
+npm install
+```
+
+5. To start the development process of the application type in the following command (whilst being in the root directory of the application):
+
+```bash
+gulp
+```
+
+6. Navigate to http://localhost:1337/ to view your newly-created application
 
 ##### File structure conventions:
 
@@ -65,6 +105,14 @@ app.module('ModuleName').view = function (controller) {
 };
 ```
 
+###### Generating a module via the Yeoman generator:
+
+Run the following command in your project's main directory, where ``<name>`` is your new Module's name:
+
+```bash
+yo mithrilbp:module <name>
+```
+
 ###### Declaring models:
 
 Declaring models is really easy. Models can be both stored in the `_dev/models` folder or your `_dev/modules/ModuleName/` folder _(just remember to have a xxModel.js format when storing them inside the module's folder)_. To create a model simply write
@@ -79,6 +127,14 @@ And to get the instance of the model:
 
 ```javascript
 var instance = app.model('MyAwesomeModel');
+```
+
+###### Generating a model via the Yeoman generator:
+
+Run the following command in your project's main directory, where ``<name>`` is your new Model's name:
+
+```bash
+yo mithrilbp:model <name>
 ```
 
 ###### Declaring components:
@@ -104,6 +160,14 @@ var instance = app.component('MyComponent');
 
 // This'll set it to this element
 app.component('MyComponent', containerElement);
+```
+
+###### Generating a component via the Yeoman generator:
+
+Run the following command in your project's main directory, where ``<name>`` is your new Component's name:
+
+```bash
+yo mithrilbp:component <name>
 ```
 
 ##### Conclusion:
