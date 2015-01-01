@@ -5,11 +5,11 @@ My personal [MithrilJS](http://lhorie.github.io/mithril/) application boilerplat
 I've recently discovered this framework, and I love the basic concepts it brings to the table. I've made a small Boilerplate you can use in your projects, it uses a set of simple conventions and GulpJS to compile and minify everything.
 
 Useful links:
-[MithrilJS Home page](http://lhorie.github.io/mithril/)
-[MithrilJS Docs](http://lhorie.github.io/mithril/mithril.html)
-[MithrilJS @ Github]()
-[Yeoman generator @ NPM](https://www.npmjs.com/package/generator-mithrilbp)
-[Yeoman generator @ GitHub](https://github.com/fristys/generator-mithrilbp)
+- [MithrilJS Home page](http://lhorie.github.io/mithril/)
+- [MithrilJS Docs](http://lhorie.github.io/mithril/mithril.html)
+- [MithrilJS @ Github]()
+- [Yeoman generator @ NPM](https://www.npmjs.com/package/generator-mithrilbp)
+- [Yeoman generator @ GitHub](https://github.com/fristys/generator-mithrilbp)
 
 ##### Installation via Yeoman:
 
