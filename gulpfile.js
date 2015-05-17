@@ -11,22 +11,24 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     chmod = require('gulp-chmod'),
     notify = require('gulp-notify'),
+    msx = require('gulp-msx'),
     del = require('del');
+
+var devSRC = 'src/app/';
 
 var paths = {
         development : {
-            scripts : [ '_dev/app/app.js', '_dev/app/models/*.js', '_dev/app/components/*.js',
-                        '_dev/app/modules/**/**Module.js', '_dev/app/modules/**/**Model.js',
-                        '_dev/app/modules/**/**Controller.js', '_dev/app/modules/**/**View.js',
-                        '_dev/app/app.routes.js'
-                        ],
-            css : '_dev/css/style.css',
-            img : '_dev/img/**/*'
+            scripts : [devSRC + 'app.js', devSRC + 'models/*.js', devSRC + 'components/*.js',
+                        devSRC + 'modules/**/**Module.js', devSRC + 'modules/**/**Model.js',
+                        devSRC + 'modules/**/**Controller.js', devSRC + 'modules/**/**View.compiled.js',
+                        devSRC + 'app.routes.js'],
+            css : devSRC + 'css/style.css',
+            img : devSRC + 'img/**/*'
         },
         production : {
-            scripts : 'js/app',
-            css : 'css',
-            img : 'img'
+            scripts : 'public/js/app',
+            css : 'public/css',
+            img : 'public/img'
         }
     },
     onError = function (err) {
@@ -36,7 +38,7 @@ var paths = {
 
 // Development Webserver
 gulp.task('webserver', function () {
-    connect.server({ livereload : true, port : 1337 });
+    connect.server({ root : 'public', livereload : true, port : 1337 });
 });
 
 // CSS
@@ -53,6 +55,14 @@ gulp.task('styles', function () {
 });
 
 // JS
+gulp.task('views', function () {
+    return gulp.src(devSRC + 'modules/**/**View.jsx')
+            .pipe(plumber({ errorHandler : onError }))
+            .pipe(msx({ harmony : true }))
+            .pipe(rename({suffix: '.compiled'}))
+            .pipe(gulp.dest(devSRC + 'modules'));
+});
+
 gulp.task('scripts', function() {
   return gulp.src(paths.development.scripts)
     .pipe(plumber({ errorHandler : onError }))
@@ -85,11 +95,12 @@ gulp.task('clean', function (callback) {
 // Watch
 gulp.task('watch', function() {
   gulp.watch(paths.development.css, ['styles']);
+  gulp.watch(devSRC + 'modules/**/**View.jsx', ['views']);
   gulp.watch(paths.development.scripts, ['scripts']);
   gulp.watch(paths.development.img, ['images']);
 });
 
 // Default task
 gulp.task('default', ['clean'], function () {
-    gulp.start('webserver', 'styles', 'scripts', 'images', 'watch');
+    gulp.start('webserver', 'styles', 'views', 'scripts', 'images', 'watch');
 });

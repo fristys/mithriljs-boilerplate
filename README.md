@@ -8,32 +8,8 @@ Useful links:
 - [MithrilJS Home page](http://lhorie.github.io/mithril/)
 - [MithrilJS Docs](http://lhorie.github.io/mithril/mithril.html)
 - [MithrilJS @ Github](https://github.com/lhorie/mithril.js)
-- [Yeoman generator @ NPM](https://www.npmjs.com/package/generator-mithrilbp)
-- [Yeoman generator @ GitHub](https://github.com/fristys/generator-mithrilbp)
-
-##### Installation via Yeoman:
-
-1. Make sure you have NodeJS installed
-2. Install Yeoman and the MithrilJS Boilerplate generator for it by writing the following command in your NodeJS console:
-
-```bash
-npm install -g yo generator-mithrilbp
-```
-
-3. Navigate to the folder you want to start your MithrilJS boilerplate powered project in and type in the following command:
-
-```bash
-yo mithrilbp
-```
-
-4. Follow the command prompts and you should get an application generated for you
-5. To start the development process of the application type in the following command (whilst being in the root directory of the application):
-
-```bash
-gulp
-```
-
-6. Navigate to http://localhost:1337/ to view your newly-created application
+- [Yeoman generator @ NPM](https://www.npmjs.com/package/generator-mithrilbp) _(no longer maintained)_
+- [Yeoman generator @ GitHub](https://github.com/fristys/generator-mithrilbp) _(no longer maintained)_
 
 ##### Manual Installation:
 
@@ -55,13 +31,15 @@ gulp
 
 ##### File structure conventions:
 
-The development files are located in the `_dev` folder, each module is stored in its own folder, located inside the `_dev/modules` folder.
+The development files are located in the `src` folder, each module is stored in its own folder, located inside the `src/modules` folder.
 If you want consistent Gulp outputs (and you do), make sure to follow the following file structure inside each module's folder:
 
 * `ModuleNameModule.js` _(you instantiate the module here, also notice the xxModule.js, Module is an important keyword)_
-* `ModuleNameModel.js`
-* `ModuleNameController.js`
-* `ModuleNameView.js`
+* `ModuleNameModel.js` _(optional module-wide model)_
+* `ModuleNameController.js` _(the controller logic for the module goes here)_
+* `ModuleNameView.jsx` _(the view for the module comes here, uses [MSX](https://github.com/insin/msx))_
+
+The output files are found inside the `public` folder.
 
 ##### Code conventions:
 
@@ -98,24 +76,18 @@ Declaring controllers / views is easy as one-two-three:
 ```javascript
 app.module('ModuleName').controller = function () {
   // Your top secret code to take over the World
+  this.hello = m.prop('One million dollars');
 };
 
 app.module('ModuleName').view = function (controller) {
-  // Visualizing your World domination
+  // Visualizing your World domination in MSX
+  return <div>{controller.hello()}</div>;
 };
-```
-
-###### Generating a module via the Yeoman generator:
-
-Run the following command in your project's main directory, where ``<name>`` is your new Module's name:
-
-```bash
-yo mithrilbp:module <name>
 ```
 
 ###### Declaring models:
 
-Declaring models is really easy. Models can be both stored in the `_dev/models` folder or your `_dev/modules/ModuleName/` folder _(just remember to have a xxModel.js format when storing them inside the module's folder)_. To create a model simply write
+Declaring models is really easy. Models can be both stored in the `src/models` folder or your `src/modules/ModuleName/` folder _(just remember to have a xxModel.js format when storing them inside the module's folder)_. To create a model simply write
 
 ```javascript
 app.model('MyAwesomeModel', {
@@ -129,17 +101,9 @@ And to get the instance of the model:
 var instance = app.model('MyAwesomeModel');
 ```
 
-###### Generating a model via the Yeoman generator:
-
-Run the following command in your project's main directory, where ``<name>`` is your new Model's name:
-
-```bash
-yo mithrilbp:model <name>
-```
-
 ###### Declaring components:
 
-Components are app-wide reusable modules that can be attached to any container. They're stored in the `_dev/components` folder.
+Components are app-wide reusable modules that can be attached to any container. They're stored in the `src/components` folder.
 Here's how to declare a component, remember that the controller and view function properties are mandatory according to MithrilJS conventions:
 
 ```javascript
@@ -160,14 +124,6 @@ var instance = app.component('MyComponent');
 
 // This'll set it to this element
 app.component('MyComponent', containerElement);
-```
-
-###### Generating a component via the Yeoman generator:
-
-Run the following command in your project's main directory, where ``<name>`` is your new Component's name:
-
-```bash
-yo mithrilbp:component <name>
 ```
 
 ##### Conclusion:

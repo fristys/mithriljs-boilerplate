@@ -12,7 +12,7 @@
    */
   var app = {};
 
-  app.BPversion = 0.9;
+  app.BPversion = 1.0;
 
   /**
    * App basic config parameters. Change at your leisure. [START]
